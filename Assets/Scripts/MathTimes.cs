@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-public class MathPlus : MonoBehaviour
+public class MathTimes : MonoBehaviour
 {
     public GameObject nextQuestionButton;
     public GameObject answerCorrect;
@@ -26,29 +26,29 @@ public class MathPlus : MonoBehaviour
 
     void Start()
     {
-        number1 += Random.Range(1, 61);
+        number1 += Random.Range(1, 13);
         Debug.Log("Number1 = " + number1);
-        number2 += Random.Range(1, 61);
+        number2 += Random.Range(1, 13);
         Debug.Log("Number2 = " + number2);
-        answer = number1 + number2;
+        answer = number1 * number2;
         Debug.Log("Answer = " + answer);
 
 
         textChoice += Random.Range(1, 4);
         if (textChoice == 1)
         {
-            questionText.text = "Tom has " + number1 + " apples and picked up " + number2 + " more from his fruit tree, How many apples does Tom have now?";
+            questionText.text = "Kate has " + number1 + " apples, and collected " + number2 + " times what she had, How many apples does Kate have now?";
         }
         if (textChoice == 2)
         {
-            questionText.text = "Henry has " + number1 + " cupcakes and made " + number2 + " more in his kitchen, How many cupcakes does Henry have now?";
+            questionText.text = "Terry has " + number1 + " cupcakes and made " + number2 + " times more for his visitors, How many cupcakes does Terry have now?";
         }
         if (textChoice >= 3)
         {
-            questionText.text = "Pete has " + number1 + " dollars and was given " + number2 + " more from his Grandmother, How much money does Pete have now?";
+            questionText.text = "Olivia has " + number1 + " dollars and was promised " + number2 + " times what he saved up, How much money does Olivia have now?";
         }
 
-        mathQuestionText.text = number1 + " + " + number2 + " =";
+        mathQuestionText.text = number1 + " x " + number2 + " =";
     }
 
     void Update()

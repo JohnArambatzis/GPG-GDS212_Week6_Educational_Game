@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-public class MathPlus : MonoBehaviour
+public class MathMinus : MonoBehaviour
 {
     public GameObject nextQuestionButton;
     public GameObject answerCorrect;
@@ -30,25 +30,25 @@ public class MathPlus : MonoBehaviour
         Debug.Log("Number1 = " + number1);
         number2 += Random.Range(1, 61);
         Debug.Log("Number2 = " + number2);
-        answer = number1 + number2;
+        answer = number1 - number2;
         Debug.Log("Answer = " + answer);
 
 
         textChoice += Random.Range(1, 4);
         if (textChoice == 1)
         {
-            questionText.text = "Tom has " + number1 + " apples and picked up " + number2 + " more from his fruit tree, How many apples does Tom have now?";
+            questionText.text = "David has " + number1 + " apples, but lost " + number2 + " from falling over, How many apples does David have now?";
         }
         if (textChoice == 2)
         {
-            questionText.text = "Henry has " + number1 + " cupcakes and made " + number2 + " more in his kitchen, How many cupcakes does Henry have now?";
+            questionText.text = "Chris has " + number1 + " cupcakes and gave away " + number2 + " to his visitors, How many cupcakes does Chris have now?";
         }
         if (textChoice >= 3)
         {
-            questionText.text = "Pete has " + number1 + " dollars and was given " + number2 + " more from his Grandmother, How much money does Pete have now?";
+            questionText.text = "Sam has " + number1 + " dollars and had to spend " + number2 + " on groceries, How much money does Sam have now?";
         }
 
-        mathQuestionText.text = number1 + " + " + number2 + " =";
+        mathQuestionText.text = number1 + " - " + number2 + " =";
     }
 
     void Update()
