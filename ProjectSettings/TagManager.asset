@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Left Apple
+  - Right Apple
+  - Left Cupcake
+  - Right Cupcake
   layers:
   - Default
   - TransparentFX

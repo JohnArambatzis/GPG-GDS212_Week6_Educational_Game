@@ -23,12 +23,19 @@ public class MathTimes : MonoBehaviour
     public int textChoice;
     public int nextQuestion;
 
+    public Transform leftCup;
+    public Transform rightCup;
+
+    public GameObject apple;
+    public GameObject dollar;
+    public GameObject cupcake;
+
 
     void Start()
     {
-        number1 += Random.Range(1, 13);
+        number1 += Random.Range(2, 13);
         Debug.Log("Number1 = " + number1);
-        number2 += Random.Range(1, 13);
+        number2 += Random.Range(2, 13);
         Debug.Log("Number2 = " + number2);
         answer = number1 * number2;
         Debug.Log("Answer = " + answer);
@@ -106,4 +113,10 @@ public class MathTimes : MonoBehaviour
             SceneManager.LoadScene(3);
         }
     }
+
+    public void LeftSpawn()
+    {
+        Instantiate(apple, leftCup);
+    }
+
 }

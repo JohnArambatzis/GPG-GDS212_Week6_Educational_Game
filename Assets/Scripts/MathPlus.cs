@@ -26,9 +26,9 @@ public class MathPlus : MonoBehaviour
 
     void Start()
     {
-        number1 += Random.Range(1, 61);
+        number1 += Random.Range(2, 61);
         Debug.Log("Number1 = " + number1);
-        number2 += Random.Range(1, 61);
+        number2 += Random.Range(2, 61);
         Debug.Log("Number2 = " + number2);
         answer = number1 + number2;
         Debug.Log("Answer = " + answer);
