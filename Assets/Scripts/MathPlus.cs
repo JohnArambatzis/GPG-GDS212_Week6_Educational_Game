@@ -23,6 +23,29 @@ public class MathPlus : MonoBehaviour
     public int textChoice;
     public int nextQuestion;
 
+    public Transform leftCup;
+    public Transform rightCup;
+    public GameObject leftApple;
+    public GameObject rightApple;
+    public GameObject leftCupcake;
+    public GameObject rightCupcake;
+    public GameObject leftAppleCheck;
+    public GameObject rightAppleCheck;
+    public GameObject leftCupcakeCheck;
+    public GameObject rightCupcakeCheck;
+    public int objectSpawnChoice;
+    public float spawnTimerLeft;
+    public float spawnTimerRight;
+    public int leftObjectCounter;
+    public int rightObjectCounter;
+
+    public TextMeshProUGUI leftCupCounterText;
+    public TextMeshProUGUI rightCupCounterText;
+    public TextMeshProUGUI counterCombinedText;
+    public int leftCupCounter;
+    public int rightCupCounter;
+    public int counterCombined;
+
 
     void Start()
     {
@@ -34,18 +57,16 @@ public class MathPlus : MonoBehaviour
         Debug.Log("Answer = " + answer);
 
 
-        textChoice += Random.Range(1, 4);
+        textChoice += Random.Range(1, 3);
         if (textChoice == 1)
         {
             questionText.text = "Tom has " + number1 + " apples and picked up " + number2 + " more from his fruit tree, How many apples does Tom have now?";
+            objectSpawnChoice = 1;
         }
-        if (textChoice == 2)
+        if (textChoice >= 2)
         {
             questionText.text = "Henry has " + number1 + " cupcakes and made " + number2 + " more in his kitchen, How many cupcakes does Henry have now?";
-        }
-        if (textChoice >= 3)
-        {
-            questionText.text = "Pete has " + number1 + " dollars and was given " + number2 + " more from his Grandmother, How much money does Pete have now?";
+            objectSpawnChoice = 2;
         }
 
         mathQuestionText.text = number1 + " + " + number2 + " =";
@@ -62,6 +83,38 @@ public class MathPlus : MonoBehaviour
                 answerWrong.SetActive(false);
                 answerWrongBool = false;
                 answerWrongTimer = 3f;
+            }
+        }
+
+        if (spawnTimerLeft > 0)
+        {
+            spawnTimerLeft -= Time.deltaTime;
+        }
+        if (spawnTimerRight > 0)
+        {
+            spawnTimerRight -= Time.deltaTime;
+        }
+
+        if (leftObjectCounter > 0)
+        {
+            if (objectSpawnChoice == 1)
+            {
+                leftAppleCheck = GameObject.FindWithTag("Left Apple");
+            }
+            if (objectSpawnChoice == 2)
+            {
+                leftCupcakeCheck = GameObject.FindWithTag("Left Cupcake");
+            }
+        }
+        if (rightObjectCounter > 0)
+        {
+            if (objectSpawnChoice == 1)
+            {
+                rightAppleCheck = GameObject.FindWithTag("Right Apple");
+            }
+            if (objectSpawnChoice == 2)
+            {
+                rightCupcakeCheck = GameObject.FindWithTag("Right Cupcake");
             }
         }
     }
@@ -104,6 +157,99 @@ public class MathPlus : MonoBehaviour
         if (nextQuestion >= 3)
         {
             SceneManager.LoadScene(3);
+        }
+    }
+
+    public void LeftSpawn()
+    {
+        if (spawnTimerLeft <= 0 && leftCupCounter < 60)
+        {
+            if (objectSpawnChoice == 1)
+            {
+                Instantiate(leftApple, leftCup);
+                spawnTimerLeft = 0.3f;
+                leftCupCounter += 1;
+                counterCombined = leftCupCounter + rightCupCounter;
+                leftCupCounterText.text = leftCupCounter.ToString("0");
+                counterCombinedText.text = counterCombined.ToString("0");
+            }
+            if (objectSpawnChoice == 2)
+            {
+                Instantiate(leftCupcake, leftCup);
+                spawnTimerLeft = 0.3f;
+                leftCupCounter += 1;
+                counterCombined = leftCupCounter + rightCupCounter;
+                leftCupCounterText.text = leftCupCounter.ToString("0");
+                counterCombinedText.text = counterCombined.ToString("0");
+            }
+        }
+    }
+
+    public void RightSpawn()
+    {
+        if (spawnTimerRight <= 0 && rightCupCounter < 60)
+        {
+            if (objectSpawnChoice == 1)
+            {
+                Instantiate(rightApple, rightCup);
+                spawnTimerRight = 0.3f;
+                rightCupCounter += 1;
+                counterCombined = leftCupCounter + rightCupCounter;
+                rightCupCounterText.text = rightCupCounter.ToString("0");
+                counterCombinedText.text = counterCombined.ToString("0");
+            }
+            if (objectSpawnChoice == 2)
+            {
+                Instantiate(rightCupcake, rightCup);
+                spawnTimerRight = 0.3f;
+                rightCupCounter += 1;
+                counterCombined = leftCupCounter + rightCupCounter;
+                rightCupCounterText.text = rightCupCounter.ToString("0");
+                counterCombinedText.text = counterCombined.ToString("0");
+            }
+        }
+    }
+
+    public void LeftDespawn()
+    {
+        if (objectSpawnChoice == 1 && leftCupCounter > 0)
+        {
+            leftAppleCheck = GameObject.FindWithTag("Left Apple");
+            Destroy(leftAppleCheck);
+            leftCupCounter -= 1;
+            counterCombined = leftCupCounter + rightCupCounter;
+            leftCupCounterText.text = leftCupCounter.ToString("0");
+            counterCombinedText.text = counterCombined.ToString("0");
+        }
+        if (objectSpawnChoice == 2 && leftCupCounter > 0)
+        {
+            leftCupcakeCheck = GameObject.FindWithTag("Left Cupcake");
+            Destroy(leftCupcakeCheck);
+            leftCupCounter -= 1;
+            counterCombined = leftCupCounter + rightCupCounter;
+            leftCupCounterText.text = leftCupCounter.ToString("0");
+            counterCombinedText.text = counterCombined.ToString("0");
+        }
+    }
+    public void RightDespawn()
+    {
+        if (objectSpawnChoice == 1 && rightCupCounter > 0)
+        {
+            rightAppleCheck = GameObject.FindWithTag("Right Apple");
+            Destroy(rightAppleCheck);
+            rightCupCounter -= 1;
+            counterCombined = leftCupCounter + rightCupCounter;
+            rightCupCounterText.text = rightCupCounter.ToString("0");
+            counterCombinedText.text = counterCombined.ToString("0");
+        }
+        if (objectSpawnChoice == 2 && rightCupCounter > 0)
+        {
+            rightCupcakeCheck = GameObject.FindWithTag("Right Cupcake");
+            Destroy(rightCupcakeCheck);
+            rightCupCounter -= 1;
+            counterCombined = leftCupCounter + rightCupCounter;
+            rightCupCounterText.text = rightCupCounter.ToString("0");
+            counterCombinedText.text = counterCombined.ToString("0");
         }
     }
 }
