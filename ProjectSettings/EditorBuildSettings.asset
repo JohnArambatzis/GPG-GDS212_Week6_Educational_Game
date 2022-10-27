@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameTimes.unity
     guid: 344555df25e24f14d8cac28b851ae0d1
+  - enabled: 1
+    path: Assets/Scenes/Instructions.unity
+    guid: 090860e88b6e8604a84de85aab5fb1db
   m_configObjects: {}

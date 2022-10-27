@@ -26,4 +26,29 @@ public class Menu : MonoBehaviour
             SceneManager.LoadScene(3);
         }
     }
+
+    public void OnClick()
+    {
+        Application.Quit();
+    }
+
+    public void Plus()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void Minus()
+    {
+        SceneManager.LoadScene(2);
+    }
+
+    public void Times()
+    {
+        SceneManager.LoadScene(3);
+    }
+
+    public void Instructions()
+    {
+        SceneManager.LoadScene(4);
+    }
 }
