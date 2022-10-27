@@ -8,6 +8,30 @@ TagManager:
   - Right Apple
   - Left Cupcake
   - Right Cupcake
+  - Apple1
+  - Apple2
+  - Apple3
+  - Apple4
+  - Apple5
+  - Apple6
+  - Apple7
+  - Apple8
+  - Apple9
+  - Apple10
+  - Apple11
+  - Apple12
+  - Cupcake1
+  - Cupcake2
+  - Cupcake3
+  - Cupcake4
+  - Cupcake5
+  - Cupcake6
+  - Cupcake7
+  - Cupcake8
+  - Cupcake9
+  - Cupcake10
+  - Cupcake11
+  - Cupcake12
   layers:
   - Default
   - TransparentFX
